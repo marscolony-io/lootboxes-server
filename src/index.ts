@@ -82,7 +82,7 @@ app.get('/:token/:rarityStr', (req: express.Request, res: express.Response) => {
   res.json({
     name: `${rarityText} Utility Crate`,
     description: `Sealed ${rarityText} Utility Crate gen0 made by marscolony.io`,
-    image: req.protocol + '://' + req.get('host') + `/${token}/${rarityStr}.png`,
+    image: (process.env.SERVER ?? 'https://lootboxes-harmony.marscolony.io') + `/${token}/${rarityStr}.png`,
     attributes: [
       attribute('Color', color.split('-').join(' ')),
     ]
