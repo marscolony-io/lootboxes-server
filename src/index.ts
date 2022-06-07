@@ -48,7 +48,6 @@ app.get('/:token/:rarityStr.png', (req: express.Request, res: express.Response) 
     return;
   }
   const filePath = path.join(__dirname, '../public/images', `${rarityText}-${color}.png`);
-  console.log(filePath);
   
   const s = fs.createReadStream(filePath);
   s.on('open', () => {
