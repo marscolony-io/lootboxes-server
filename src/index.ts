@@ -15,7 +15,7 @@ app.use((req: express.Request, res: express.Response, next: Function) => {
 const getTokenData = (token: string, rarityStr: string) => {
   const tokenNumber = parseInt(token);
   const rarity = parseInt(rarityStr);
-  const rarityText = ['Common', 'Rare', 'Legendary'][rarity] ?? 0;
+  const rarityText = ['Common', 'Rare', 'Legendary'][rarity] ?? '0';
   const color = [
     'orange-top',
     'yellow-top',
@@ -85,6 +85,7 @@ app.get('/:token/:rarityStr', (req: express.Request, res: express.Response) => {
     image: (process.env.SERVER ?? 'https://lootboxes-harmony.marscolony.io') + `/${token}/${rarityStr}.png`,
     attributes: [
       attribute('Color', color.split('-').join(' ')),
+      attribute('Rarity', rarityText),
     ]
   });
 });
